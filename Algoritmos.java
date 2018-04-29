@@ -26,8 +26,28 @@ package calculoNumerico;
          */
         public static double mediaAritmetica(double a, double b){
             // Calculando a média
+            System.out.println("Fazendo a média dos dois pontos...............");
+            System.out.println("a |======= x =======| b");
             double media = (a + b)/2;
+            System.out.printf("x = (a+b)/2 => (%f + %f)/2 = %f \n", a, b, media);
+            System.out.printf("%f |======= %f =======| %f \n", a, media, b);
             return media;
+        }
+        
+        public static void printCondicao(double a, double b){
+            System.out.println("Verificando se f(a)f(b) < 0...............");
+            System.out.printf("f(a) = %f \n", funcao(a));
+            System.out.printf("f(b) = %f \n", funcao(b));
+            System.out.printf("f(a)f(b) = %f \n", funcao(a)*funcao(b));
+            System.out.println();
+        }
+        
+        public static void printFucaoSinal(double a, double x, double b){
+            System.out.println("Verificando onde a função muda de sinal...............");
+            System.out.printf("a = %f, x = %f, b = %f \n", a, x, b);
+            System.out.printf("f(a) = %f \n", funcao(a));
+            System.out.printf("f(x) = %f \n", funcao(x));
+            System.out.printf("f(b) = %f \n", funcao(b));
         }
         
         /**
@@ -41,25 +61,39 @@ package calculoNumerico;
             int k = 1;
             double modulo;
             // Verificando se f(a)f(b) < 0.
+            printCondicao(a, b);
             if((funcao(a)*funcao(b)) < precisao){
                 // Enquanto for verdadeiro.
+                System.out.println("Aplicando o método...............");
                 while(true){
-                    // Calculando a media dos intervalos.           
+                    System.out.printf("K = %d \n", k);
+                    // Calculando a media dos intervalos.   
+                    
                     double x = mediaAritmetica(a, b);
+                    
                     // Verificando onde a funcão muda de sinal.
+                    printFucaoSinal(a,x,b);
                     if(funcao(x) > 0)
                         b = x;
                     else
                         a = x;
                     // Calculando o médulo para o critério de parada.
+                    System.out.println("Critério de Parada....");
+                    System.out.printf("|b - a|/|b| = |(%f) - (%f)|/|%f| \n", b, a, b);
                     modulo = Math.abs((b - a)/b);
                     // Verificando o erro relativo com a precisão.
+                    System.out.println("Verificando o erro relativo com a precião...............");                  
                     if(modulo < precisao){
+                        System.out.printf("E < precisao => %f < %f \n", modulo, precisao);
                         // Mostrando a melhor aproximação para raiz.
-                        System.out.printf("O valor mais proximo para raíz é: %f", (x));
+                        System.out.printf("O valor mais proximo para raíz é: %f \n", (x));
+                        System.out.println("Fim...");
                         // Quebrando o loop.
                         break;
                     }
+                    System.out.printf("E > precisao => %f > %f \n", modulo, precisao);
+                    System.out.println();
+                    System.out.println();
                     // Incrementando o contador de interações.
                     k++;
                     }        
