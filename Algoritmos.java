@@ -34,6 +34,11 @@ package calculoNumerico;
             return media;
         }
         
+        /**
+         * Método para mostrar prints na tela de como a condição esta sendo feita.
+         * @param a Limite inferior
+         * @param b Limite superior
+         */
         public static void printCondicao(double a, double b){
             System.out.println("Verificando se f(a)f(b) < 0...............");
             System.out.printf("f(a) = %f \n", funcao(a));
@@ -42,6 +47,12 @@ package calculoNumerico;
             System.out.println();
         }
         
+        /**
+         * Método para mostrar na tela os prints de como a esta sendo selecionando os novos limites.
+         * @param a Limete superior
+         * @param x Media entre os limites
+         * @param b Limite inferior
+         */
         public static void printFucaoSinal(double a, double x, double b){
             System.out.println("Verificando onde a função muda de sinal...............");
             System.out.printf("a = %f, x = %f, b = %f \n", a, x, b);
