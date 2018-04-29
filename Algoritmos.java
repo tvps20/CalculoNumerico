@@ -51,7 +51,7 @@ package calculoNumerico;
                         b = x;
                     else
                         a = x;
-                    // Calculando o médulo para o critério de parada.
+                    // Calculando o módulo para o critério de parada.
                     modulo = Math.abs((b - a)/b);
                     // Verificando o erro relativo com a precisão.
                     if(modulo < precisao){
