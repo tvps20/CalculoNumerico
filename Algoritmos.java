@@ -14,8 +14,8 @@ package calculoNumerico;
         public static double funcao(double x){
             // Calculando a função
             //double expressao = (4 * Math.cos(x)) - (Math.pow(Math.E, (2 * x)));
-            //double expressao = (Math.pow((2.02 * x),5)) - (Math.pow((1.28 * x),4)) + (Math.pow((3.06 * x),3)) - (Math.pow((2.92 * x),2)) - (5.66 * x) + 6.08;
-            double expressao = (Math.pow(x,5)-6);
+            double expressao = (Math.pow((2.02 * x),5)) - (Math.pow((1.28 * x),4)) + (Math.pow((3.06 * x),3)) - (Math.pow((2.92 * x),2)) - (5.66 * x) + 6.08;
+            //double expressao = (Math.pow(x,5)-6);
             return expressao;
         }
         
@@ -132,8 +132,8 @@ package calculoNumerico;
          */
         public static double funcaoDerivada(double x){
             // Calculando a derivada da função
-            //double expressao = (Math.pow((10.1 * x),4)) - (Math.pow((5.12 * x),3)) + (Math.pow((9.18 * x),2)) - (5.84 * x) - 5.66;
-            double expressao = (5 * Math.pow(x, 4));
+            double expressao = (Math.pow((10.1 * x),4)) - (Math.pow((5.12 * x),3)) + (Math.pow((9.18 * x),2)) - (5.84 * x) - 5.66;
+            //double expressao = (5 * Math.pow(x, 4));
             return expressao;
         }
         
@@ -193,10 +193,10 @@ package calculoNumerico;
 
         public static void main(String[] args){
             
-            double[] array = {1, 1.5};
+            double[] array = {-2, 0};
 
-            //metodoBisseccao(array, 0.01);
-            metodoNewton(array, 0.01);
+            metodoBisseccao(array, 0.01);
+            //metodoNewton(array, 0.01);
             //System.out.println(calcularX0(array));
             
             
