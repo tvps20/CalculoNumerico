@@ -44,6 +44,7 @@ package calculoNumerico;
          */
         public static double funcaoDerivada(double x){
             // Calculando a derivada da função
+            //double expressao = -((4 * Math.sin(x)) - (Math.pow(Math.E, (2*x))));
             double expressao = (10.1 * Math.pow(x,4)) - (5.12 * Math.pow(x,3)) + (9.18 * Math.pow(x,2)) - (5.84 * x) - 5.66;
             //double expressao = (5 * Math.pow(x, 4));
             return expressao;
@@ -213,7 +214,8 @@ package calculoNumerico;
 
         public static void main(String[] args){
             
-            double[] array = {0.9, 1};
+            double[] array = {0.9,1};
+            //double[] array = {-2,0};
 
             metodoBisseccao(array, 0.0001, 20);
             //metodoNewton(array, 0.0001, 20);
