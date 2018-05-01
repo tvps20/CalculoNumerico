@@ -32,8 +32,8 @@ package calculoNumerico;
         public static double funcao(double x){
             // Calculando a função
             //double expressao = (4 * Math.cos(x)) - (Math.pow(Math.E, (2 * x)));
-            double expressao = (2.02 * Math.pow(x ,5))  - (1.28 * Math.pow(x ,4)) + (3.06 * Math.pow(x,3)) - (2.92 * Math.pow(x,2)) - (5.66 * x) + 6.08;
-            //double expressao = (Math.pow(x,5)-6);
+            //double expressao = (2.02 * Math.pow(x ,5))  - (1.28 * Math.pow(x ,4)) + (3.06 * Math.pow(x,3)) - (2.92 * Math.pow(x,2)) - (5.66 * x) + 6.08;
+            double expressao = (Math.pow(x,5)-6);
             return expressao;
         }
         
@@ -44,8 +44,8 @@ package calculoNumerico;
          */
         public static double funcaoDerivada(double x){
             // Calculando a derivada da função
-            double expressao = (10.1 * Math.pow(x,4)) - (5.12 * Math.pow(x,3)) + (9.18 * Math.pow(x,2)) - (5.84 * x) - 5.66;
-            //double expressao = (5 * Math.pow(x, 4));
+            //double expressao = (10.1 * Math.pow(x,4)) - (5.12 * Math.pow(x,3)) + (9.18 * Math.pow(x,2)) - (5.84 * x) - 5.66;
+            double expressao = (5 * Math.pow(x, 4));
             return expressao;
         }
         
@@ -153,7 +153,7 @@ package calculoNumerico;
             double b = intervalo[1];
             int k = 0;
             double xNovo;
-            double xInicial = ((a + b)/2);
+            double xInicial = calcularX0(intervalo);
             double E;
             // Verificando se f(a)f(b) < 0.
 
@@ -166,18 +166,18 @@ package calculoNumerico;
                 System.out.println("Aplicando o método...............\n\n");
                 
                 do{          
+                    xNovo = xInicial - (funcao(xInicial)/funcaoDerivada(xInicial));  
+                    
                     System.out.println("K = " + k);
                     System.out.printf("x%d = %f \n", (k), xInicial);
                     System.out.printf("f(x%d) = %f \n", (k), funcao(xInicial));
                     System.out.printf("f'(x%d) = %f \n", (k), funcaoDerivada(xInicial));
                     System.out.printf("x%d = x%d + f(x)/f'(x) = %f - (%f/%f) \n", (k+1), k, xInicial, funcao(xInicial), funcaoDerivada(xInicial));
-
-
-                    xNovo = xInicial - (funcao(xInicial)/funcaoDerivada(xInicial));     
                     System.out.printf("x%d = %f \n", (k+1), xNovo);
+                    System.out.printf("f(x%d) = %f \n", (k+1), funcao(xNovo));
 
                     
-                    E = Math.abs((xNovo-xInicial)/xNovo)*100;;
+                    E = Math.abs((xNovo-xInicial)/xNovo);
                     System.out.println("Critério de Parada...............");
                     System.out.printf("E = |x%d - x%d|/|x%d| = |(%f) - (%f)|/|%f| \n", (k+1), k, (k+1), xNovo, xInicial, xNovo);
                     System.out.println("E = " + E);
@@ -210,10 +210,10 @@ package calculoNumerico;
 
         public static void main(String[] args){
             
-            double[] array = {0.9, 1};
+            double[] array = {1.4, 1.4};
 
-            metodoBisseccao(array, 0.0001, 20);
-            //metodoNewton(array, 0.0001, 4);
+            //metodoBisseccao(array, 0.0001, 20);
+            metodoNewton(array, 0.0001, 20);
                                                          
         }
 }
