@@ -197,8 +197,6 @@ package calculoNumerico;
 
             metodoBisseccao(array, 0.01);
             //metodoNewton(array, 0.01);
-            //System.out.println(calcularX0(array));
-            
-            
+                      
         }
 }
