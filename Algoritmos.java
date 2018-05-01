@@ -106,6 +106,7 @@ package calculoNumerico;
 
                     E = (b - a)/b;
                     E = Math.abs(E);
+                    
                     System.out.println("Critério de Parada...............");
                     System.out.printf("E = |b - a|/|b| = |(%f) - (%f)|/|%f| \n", b, a, b);
                     System.out.println("E = " + E);
@@ -120,7 +121,8 @@ package calculoNumerico;
                         System.out.println("E = " + E);
                         System.out.println("Fim...");
                         break;
-                    }           
+                    } 
+                    
                     System.out.printf("E > precisao => %f > %f \n", E, precisao);
                     System.out.println("\n\n");
 
@@ -178,11 +180,12 @@ package calculoNumerico;
 
                     
                     E = Math.abs((xNovo-xInicial)/xNovo);
+                    
                     System.out.println("Critério de Parada...............");
                     System.out.printf("E = |x%d - x%d|/|x%d| = |(%f) - (%f)|/|%f| \n", (k+1), k, (k+1), xNovo, xInicial, xNovo);
                     System.out.println("E = " + E);
-
                     System.out.println("Verificando o erro relativo com a precião..............."); 
+                    
                     if((precisao > E) || (k >= qtdInteracoes)){
                         System.out.printf("E < precisao => %f < %f \n", E, precisao);
                         System.out.printf("O valor mais proximo para raíz é: %f \n\n", xNovo);
