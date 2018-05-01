@@ -14,7 +14,8 @@ package calculoNumerico;
         public static double funcao(double x){
             // Calculando a função
             //double expressao = (4 * Math.cos(x)) - (Math.pow(Math.E, (2 * x)));
-            double expressao = (Math.pow((2.02 * x),5)) - (Math.pow((1.28 * x),4)) + (Math.pow((3.06 * x),3)) - (Math.pow((2.92 * x),2)) - (5.66 * x) + 6.08;
+            //double expressao = (Math.pow((2.02 * x),5)) - (Math.pow((1.28 * x),4)) + (Math.pow((3.06 * x),3)) - (Math.pow((2.92 * x),2)) - (5.66 * x) + 6.08;
+            double expressao = (Math.pow(x,5)-6);
             return expressao;
         }
         
@@ -78,8 +79,8 @@ package calculoNumerico;
                 System.out.println("Aplicando o método...............");
                 while(true){
                     System.out.printf("K = %d \n", k);
-                    // Calculando a media dos intervalos.   
                     
+                    // Calculando a media dos intervalos.                 
                     double x = mediaAritmetica(a, b);
                     
                     // Verificando onde a funcão muda de sinal.
@@ -88,10 +89,11 @@ package calculoNumerico;
                         b = x;
                     else
                         a = x;
-                    // Calculando o médulo para o critério de parada.
+                    // Calculando o modulo para o critério de parada.
                     System.out.println("Critério de Parada....");
-                    System.out.printf("|b - a|/|b| = |(%f) - (%f)|/|%f| \n", b, a, b);
+                    System.out.printf("E = |b - a|/|b| = |(%f) - (%f)|/|%f| \n", b, a, b);
                     modulo = Math.abs((b - a)/b);
+                    System.out.println("E = " + modulo);
                     // Verificando o erro relativo com a precisão.
                     System.out.println("Verificando o erro relativo com a precião...............");                  
                     if(modulo < precisao){
@@ -108,20 +110,95 @@ package calculoNumerico;
                     // Incrementando o contador de interações.
                     k++;
                     }        
-            } else {
+            }else {
+                // Mostrando que não existe raiz no intervalo.
+                System.out.println("A valor da f(a)f(b) é maior que 0."); 
+            }                     
+        }
+        
+        /**
+         * Método para determinar um valor entre o intervalo dado.
+         * @param intervalo um array contendo dois elementos, limite superior e limite inferior.
+         * @return O retorno é um double.
+         */
+        public static double calcularX0(double[] intervalo){
+            return ((intervalo[0]+intervalo[1])/2);
+        }
+        
+        /**
+         * Método com derivada da função pre-definida, sendo esta: 10.1x^4 - 5.12x^3 + 9.18x^2 - 5.84x - 5.66;
+         * @param x é qualquer numero interio ou decimal para ser usado na função.
+         * @return o retorno é um double.
+         */
+        public static double funcaoDerivada(double x){
+            // Calculando a derivada da função
+            //double expressao = (Math.pow((10.1 * x),4)) - (Math.pow((5.12 * x),3)) + (Math.pow((9.18 * x),2)) - (5.84 * x) - 5.66;
+            double expressao = (5 * Math.pow(x, 4));
+            return expressao;
+        }
+        
+        /**
+         * Método para tenta encontrar uma aproximação da raíz em um determinado intervalo, caso exista.
+         * @param intervalo é uma arrya contendo dois elementos, que serão os intervalos usados para achar uma aproximação da raíz neste intervalo.
+         * @param precisao é o critério de para para a melhor aproximação da raíz.
+         */
+        public static void metodoNewton(double[] intervalo, double precisao){
+            double a = intervalo[0];
+            double b = intervalo[1];
+            int k = 0;
+            double x = calcularX0(intervalo);
+            double modulo;
+            int count = 1;
+            // Verificando se f(a)f(b) < 0.
+            if((funcao(a)*funcao(b)) < precisao){
+                // Enquanto for verdadeiro.
+                System.out.println("Aplicando o método...............");
+                while(true){
+                    System.out.printf("K = %d \n", k);    
+                    // Calculando o x da vez
+                    System.out.printf("x%d = x%d + f(x)/f'(x) = %f - (%f/%f) \n", count, k, x, funcao(x), funcaoDerivada(x));
+                    double aux = (x - ((funcao(x))/funcaoDerivada(x)));
+                    System.out.println("x" + count + " = " + aux);
+                    
+                    // Calculando o modulo para o critério de parada.
+                    System.out.println("Critério de Parada....");
+                    System.out.printf("E = |xn - x(n-1)|/|xn| = |(%f) - (%f)|/|%f| \n", aux, x, aux);
+                    modulo = Math.abs((aux - x)/aux);
+                    System.out.println("E = " + modulo);
+                    // Verificando o erro relativo com a precisão.
+                    System.out.println("Verificando o erro relativo com a precião..............."); 
+                    if(modulo < precisao){
+                        System.out.printf("E < precisao => %f < %f \n", modulo, precisao);
+                        // Mostrando a melhor aproximação para raiz.
+                        System.out.printf("O valor mais proximo para raíz é: %f \n", (aux));
+                        System.out.println("Fim...");
+                        // Quebrando o loop.
+                        break;
+                    }
+                    System.out.printf("E > precisao => %f > %f \n", modulo, precisao);
+                    System.out.println();
+                    System.out.println();
+                    // fazendo o x se tornar o novo x0.
+                    x = aux;
+                    // Incrementando o contador de interações.
+                    k++; 
+                    // Incrementando o contatador do x.
+                    count++;
+                }
+            }else {
                 // Mostrando que não existe raiz no intervalo.
                 System.out.println("A valor da f(a)f(b) é maior que 0."); 
             }
-                        
         }
-
 
         public static void main(String[] args){
             
-            double[] array = {-2, 0};
+            double[] array = {1, 1.5};
 
-            metodoBisseccao(array, 0.01);
-            System.out.println();
+            //metodoBisseccao(array, 0.01);
+            metodoNewton(array, 0.01);
+            //System.out.println(calcularX0(array));
+            
             
         }
 }
