@@ -177,19 +177,18 @@ package calculoNumerico;
                     System.out.printf("x%d = %f \n", (k+1), xNovo);
 
                     
-                    E = (xNovo - xInicial)/xNovo;
-                    E = Math.abs(E);
+                    E = Math.abs((xNovo-xInicial)/xNovo)*100;;
                     System.out.println("Critério de Parada...............");
                     System.out.printf("E = |x%d - x%d|/|x%d| = |(%f) - (%f)|/|%f| \n", (k+1), k, (k+1), xNovo, xInicial, xNovo);
                     System.out.println("E = " + E);
 
                     System.out.println("Verificando o erro relativo com a precião..............."); 
-                    if((E < precisao) || (k >= qtdInteracoes)){
+                    if((precisao > E) || (k >= qtdInteracoes)){
                         System.out.printf("E < precisao => %f < %f \n", E, precisao);
                         System.out.printf("O valor mais proximo para raíz é: %f \n\n", xNovo);
                         System.out.println("Resumo");
                         System.out.println("k = " + k);
-                        System.out.printf("f(x%d) = %f \n", (k+1), xNovo);
+                        System.out.printf("x%d = %f \n", (k+1), xNovo);
                         System.out.printf("f(x%d) = %f \n", (k+1), funcao(xNovo));
                         System.out.println("E = " + E);
                         System.out.println("Fim...");
@@ -214,7 +213,7 @@ package calculoNumerico;
             double[] array = {0.9, 1};
 
             metodoBisseccao(array, 0.0001, 20);
-            //metodoNewton(array, 0.0001, 3);
+            //metodoNewton(array, 0.0001, 4);
                                                          
         }
 }
