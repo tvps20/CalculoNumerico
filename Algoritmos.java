@@ -72,7 +72,7 @@ package calculoNumerico;
             int k = 1;
             double E;
 
-            if((funcao(a)*funcao(b)) < 0){
+            if((funcaoDerivada(a)*funcaoDerivada(b)) < 0){
             //if(existeRaiz(a, b)){        
                 System.out.println("#=============== Método da Bissecção ===============#");
                 System.out.printf("Intervalo = [%.2f, %.2f] \n", a, b);
@@ -89,15 +89,15 @@ package calculoNumerico;
                     System.out.printf("x%d = %f \n", k, x);
                     System.out.printf("a|================= x%d ==================|b \n", k);
                     System.out.printf("%f|======= %f =======|%f \n", a, x, b);
-                    System.out.printf("f(x%d) = %f \n", k, funcao(x));
+                    System.out.printf("f(x%d) = %f \n", k, funcaoDerivada(x));
 
                     System.out.println("Verificando onde a função muda de sinal...............");
                     System.out.printf("a = %f, x = %f, b = %f \n", a, x, b);
-                    System.out.printf("f(a) = %f \n", funcao(a));
-                    System.out.printf("f(x) = %f \n", funcao(x));
-                    System.out.printf("f(b) = %f \n", funcao(b));
+                    System.out.printf("f(a) = %f \n", funcaoDerivada(a));
+                    System.out.printf("f(x) = %f \n", funcaoDerivada(x));
+                    System.out.printf("f(b) = %f \n", funcaoDerivada(b));
 
-                    if(funcao(x) > 0)
+                    if(funcaoDerivada(x) > 0)
                         b = x;
                     else
                         a = x;
@@ -116,7 +116,7 @@ package calculoNumerico;
                         System.out.println("Resumo");
                         System.out.println("k = " + k);
                         System.out.printf("x%d = %f \n", k, x);
-                        System.out.printf("f(x%d) = %f \n", k, funcao(x));
+                        System.out.printf("f(x%d) = %f \n", k, funcaoDerivada(x));
                         System.out.println("E = " + E);
                         System.out.println("Fim...");
                         break;
@@ -128,7 +128,7 @@ package calculoNumerico;
                     k++;
                 }        
             }else {
-                System.out.println("Não existe pode raiz nesse intervalo!"); 
+                 System.out.println("A pode não existir raiz nesse intervalo..............."); 
             }                     
         }
         
@@ -205,7 +205,7 @@ package calculoNumerico;
                 }while(true);
                 
             }else {
-                System.out.println("A raíz pode não existe nesse intervalo"); 
+                System.out.println("A pode não existir raiz nesse intervalo..............."); 
             }
         }
 
