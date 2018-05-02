@@ -30,7 +30,6 @@ package calculoNumerico;
          * @return o retorno é um doble. 
          */
         public static double funcao(double x){
-            // Calculando a função
             //double expressao = (4 * Math.cos(x)) - (Math.pow(Math.E, (2 * x)));
             double expressao = (2.02 * Math.pow(x ,5))  - (1.28 * Math.pow(x ,4)) + (3.06 * Math.pow(x,3)) - (2.92 * Math.pow(x,2)) - (5.66 * x) + 6.08;
             //double expressao = (Math.pow(x,5)-6);
@@ -43,7 +42,6 @@ package calculoNumerico;
          * @return o retorno é um double.
          */
         public static double funcaoDerivada(double x){
-            // Calculando a derivada da função
             //double expressao = -((4 * Math.sin(x)) - (Math.pow(Math.E, (2*x))));
             double expressao = (10.1 * Math.pow(x,4)) - (5.12 * Math.pow(x,3)) + (9.18 * Math.pow(x,2)) - (5.84 * x) - 5.66;
             //double expressao = (5 * Math.pow(x, 4));
@@ -73,8 +71,8 @@ package calculoNumerico;
             double b = intervalo[1];
             int k = 1;
             double E;
-            // Verificando se f(a)f(b) < 0.
-            //if((funcao(a)*funcao(b)) < 0){
+
+            if((funcao(a)*funcao(b)) < 0){
             //if(existeRaiz(a, b)){        
                 System.out.println("#=============== Método da Bissecção ===============#");
                 System.out.printf("Intervalo = [%.2f, %.2f] \n", a, b);
@@ -129,10 +127,9 @@ package calculoNumerico;
 
                     k++;
                 }        
-            //}else {
-                //Mostrando que não existe raiz no intervalo.
-                //System.out.println("Não existe raiz nesse intervalo!"); 
-            //}                     
+            }else {
+                System.out.println("Não existe pode raiz nesse intervalo!"); 
+            }                     
         }
         
         /**
@@ -160,7 +157,7 @@ package calculoNumerico;
             double E;
             // Verificando se f(a)f(b) < 0.
 
-            //if((funcao(a)*funcao(b)) < 0){
+            if((funcao(a)*funcao(b)) < 0){
                 System.out.println("#=============== Método de Newton-Raphson ===============#");
                 System.out.printf("Intervalo = [%.2f, %.2f] \n", a, b);
                 System.out.println("Precisão = " + precisao);
@@ -207,9 +204,9 @@ package calculoNumerico;
             
                 }while(true);
                 
-            //}else {
-                //System.out.println("A raíz não existe nesse intervalo"); 
-            //}
+            }else {
+                System.out.println("A raíz pode não existe nesse intervalo"); 
+            }
         }
 
         public static void main(String[] args){
