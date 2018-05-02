@@ -157,7 +157,7 @@ package calculoNumerico;
             double E;
             // Verificando se f(a)f(b) < 0.
 
-            if((funcao(a)*funcao(b)) < 0){
+            if((funcaoDerivada(a)*funcaoDerivada(b)) < 0){
                 System.out.println("#=============== Método de Newton-Raphson ===============#");
                 System.out.printf("Intervalo = [%.2f, %.2f] \n", a, b);
                 System.out.println("Precisão = " + precisao);
